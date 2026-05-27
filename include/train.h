@@ -4,17 +4,31 @@
 
 class Train {
  private:
-  struct Car {
-    bool light; // состояние лампочки
-    Car *next;
-    Car *prev;
-  };
-  int countOp; // счетчик шагов (число переходов из вагона в вагон)
-  Car *first; // точка входа в поезд (первый вагон)
+    struct Car {
+        bool light;     // состояние лампочки
+        Car* next;      // указатель на следующий вагон
+        Car* prev;      // указатель на предыдущий вагон
+
+        explicit Car(bool light_state);  // конструктор вагона
+    };
+
+    int count_op_;      // счетчик шагов (число переходов)
+    Car* first_;        // точка входа в поезд (первый вагон)
+    int real_length_;   // реальная длина поезда
+
  public:
-  Train();
-  void addCar(bool light); // добавить вагон с начальным состоянием лампочки
-  int getLength();          // вычислить длину поезда
-  int getOpCount();         // вернуть число переходов (из вагона в вагон)
+    Train();                            // конструктор
+    ~Train();                           // деструктор
+
+    void AddCar(bool light);            // добавить вагон
+    int GetLength();                    // вычислить длину поезда
+    int GetOpCount() const;             // вернуть число переходов
+    int GetRealLength() const;          // вернуть реальную длину
+    void Clear();                       // очистить поезд
+
+ private:
+    // Запрещаем копирование
+    Train(const Train&);
+    Train& operator=(const Train&);
 };
 #endif  // INCLUDE_TRAIN_H_
