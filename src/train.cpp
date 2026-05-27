@@ -1,7 +1,9 @@
 // Copyright 2021 NNTU-CS
+
 #include "train.h"
 
-Train::Car::Car(bool light_state) : light(light_state), next(nullptr), prev(nullptr) {}
+Train::Car::Car(bool light_state)
+    : light(light_state), next(nullptr), prev(nullptr) {}
 
 Train::Train() : count_op_(0), first_(nullptr), real_length_(0) {}
 
@@ -48,8 +50,6 @@ int Train::GetLength() {
     if (first_->next == first_) return 1;
 
     count_op_ = 0;
-
-
 
     Car* current = first_;
     Car* start = first_;
