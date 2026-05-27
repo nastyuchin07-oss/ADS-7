@@ -1,8 +1,8 @@
 // Copyright 2022 NNTU-CS
 
-#include "train.h"
-
 #include <iostream>
+
+#include "train.h"
 
 int main() {
     Train train;
